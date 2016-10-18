@@ -6,19 +6,19 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 public class CEDARDropwizardExampleConfiguration extends Configuration {
   @NotEmpty
-  private String template;
+  private String message;
 
   @NotEmpty
   private String defaultName = "Stranger";
 
   @JsonProperty
-  public String getTemplate() {
-    return template;
+  public String getMessage() {
+    return message;
   }
 
   @JsonProperty
-  public void setTemplate(String template) {
-    this.template = template;
+  public void setMessage(String message) {
+    this.message = message;
   }
 
   @JsonProperty

@@ -21,18 +21,16 @@ public class CEDARDropwizardExampleApplication extends Application<CEDARDropwiza
 
   @Override public void initialize(final Bootstrap<CEDARDropwizardExampleConfiguration> bootstrap)
   {
-    // TODO: application initialization
   }
 
   @Override public void run(final CEDARDropwizardExampleConfiguration configuration, final Environment environment)
   {
-    final CEDARDropwizardExampleResource resource = new CEDARDropwizardExampleResource(configuration.getTemplate(),
+    final CEDARDropwizardExampleResource resource = new CEDARDropwizardExampleResource(configuration.getMessage(),
       configuration.getDefaultName());
     environment.jersey().register(resource);
 
     final CEDARDropwizardExampleHealthCheck healthCheck = new CEDARDropwizardExampleHealthCheck(
-      configuration.getTemplate());
-    environment.healthChecks().register("template", healthCheck);
-    environment.jersey().register(resource);
+      configuration.getMessage());
+    environment.healthChecks().register("message", healthCheck);
   }
 }

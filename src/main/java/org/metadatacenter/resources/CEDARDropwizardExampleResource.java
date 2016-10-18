@@ -13,20 +13,20 @@ import java.util.concurrent.atomic.AtomicLong;
 
 @Path("/hello-world") @Produces(MediaType.APPLICATION_JSON) public class CEDARDropwizardExampleResource
 {
-  private final String template;
+  private final String message;
   private final String defaultName;
   private final AtomicLong counter;
 
-  public CEDARDropwizardExampleResource(String template, String defaultName)
+  public CEDARDropwizardExampleResource(String message, String defaultName)
   {
-    this.template = template;
+    this.message = message;
     this.defaultName = defaultName;
     this.counter = new AtomicLong();
   }
 
   @GET @Timed public Saying sayHello(@QueryParam("name") Optional<String> name)
   {
-    final String value = String.format(template, name.orElse(defaultName));
+    final String value = String.format(message, name.orElse(defaultName));
     return new Saying(counter.incrementAndGet(), value);
   }
 }
