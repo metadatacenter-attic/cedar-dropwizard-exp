@@ -27,6 +27,6 @@ import java.util.concurrent.atomic.AtomicLong;
   @GET @Timed public Saying sayHello(@QueryParam("name") Optional<String> name)
   {
     final String value = String.format(message, name.orElse(defaultName));
-    return new Saying(counter.incrementAndGet(), value);
+    return new Saying(counter.incrementAndGet(), "Bob");
   }
 }
